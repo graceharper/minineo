@@ -1,22 +1,43 @@
 create
-( {name: "a", nodeType:"NETFLOW"  } )-[:1 ]-> (  {name: "A", nodeType:"reg"}   )      
-( {name: "A", nodeType:"reg"  } )-[:2 ]-> (  {name: "b", nodeType:"NETFLOW"}   )
+( a{name: "a", nodeType:"NETFLOW"}),
+( b{name: "b", nodeType:"NETFLOW"}), 
+( c{name: "c", nodeType:"NETFLOW"}),
 
-( {name: "b", nodeType:"NETFLOW"  } )-[:13]-> (  {name: "a", nodeType:"NETFLOW"}   )
+(A{name: "A", nodeType:"reg"}	 ),
+(B{name: "B", nodeType:"reg"}    ),  
+(C{name: "C", nodeType:"reg"}    ),  
+(D{name: "D", nodeType:"reg"}    ),  
+(E{name: "E", nodeType:"reg"}    ), 
+(F{name: "F", nodeType:"reg"}    ); 
 
-( {name: "a", nodeType:"NETFLOW"  }	)-[: 9]-> (  {name: "E", nodeType:"reg"}   )
-( {name: "A", nodeType:"reg"  } )-[: 3]-> (  {name: "E", nodeType:"reg"}   )
-( {name: "A", nodeType:"reg"  }	)-[: 4]-> (  {name: "B", nodeType:"reg"}   )
-( {name: "B", nodeType:"reg"  } )-[:5 ]-> (  {name: "C", nodeType:"reg"}   )
-( {name: "C", nodeType:"reg"  }	)-[:6 ]-> (  {name: "D", nodeType:"reg"}   )
-( {name: "D", nodeType:"reg"  }	)-[:7 ]-> (  {name: "B", nodeType:"reg"}   )
-( {name: "E", nodeType:"reg"  } )-[:8 ]-> (  {name: "F", nodeType:"reg"}   )
-( {name: "F", nodeType:"reg"  }	)-[:11 ]->(  {name: "c", nodeType:"reg"}   )
 
-( {name: "c", nodeType:"NETFLOW"  } )-[:12 ]->(  {name: "G", nodeType:"reg"}   )
-( {name: "E", nodeType:"reg"  } )-[:10 ]->(  {name: "b", nodeType:"NETFLOW"}   )
+match 
 
-( {name: "b", nodeType:"NETFLOW"  } )-[:14 ]->(  {name: "E", nodeType:"reg"}   )
+( a{name: "a", nodeType:"NETFLOW"}),
+( b{name: "b", nodeType:"NETFLOW"}), 
+( c{name: "c", nodeType:"NETFLOW"}),
+
+(A{name: "A", nodeType:"reg"}	 ),
+(B{name: "B", nodeType:"reg"}    ),  
+(C{name: "C", nodeType:"reg"}    ),  
+(D{name: "D", nodeType:"reg"}    ),  
+(E{name: "E", nodeType:"reg"}    ), 
+(F{name: "F", nodeType:"reg"}    ) 
+
+CREATE
+(A )-[:rel]-> ( b ),
+(a )-[:rel]-> ( A ),
+(E )-[:rel]-> ( F ),
+(A )-[:rel]-> ( E ),
+(A )-[:rel]-> ( B ),
+(B )-[:rel]-> ( C ),
+(C )-[:rel]-> ( D ),
+(D )-[:rel]-> ( B ),
+(E )-[:rel]-> ( b ),
+(F )-[:rel]-> ( c ),
+(c )-[:rel]-> ( G ),
+(b )-[:rel]-> ( a ),
+(b )-[:rel]-> ( E ); 
 
 
 
